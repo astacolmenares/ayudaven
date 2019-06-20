@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Ayudaven</title>
+	<link rel="icon" href="{% static 'img/icon.png' %}">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+	<header>
+		<div class="content">
+			<a class="header-item" href="#">
+				<img src="{% static 'img/icon.png' %}" alt="ayudaven icon">
+				<span>AYUDAVEN</span>
+			</a>
+		</div>
+	</header>
+	<main>
+		<img class="banner-img" src="{% static 'img/banner.jpg' %}" alt="">
+		<div class="bg-black"></div>
+		<div class="content">
+			<div class="banner">
+				<div class="presentation">
+					<img class="logo" src="{% static 'img/icon.png' %}" alt="ayudaven icon">
+					<div class="presentation-content">
+						<h1 class="presentation-title">AYUDAVEN</h1>
+						<h2 class="presentation-title sombra">AYUDAVEN</h2>
+						<p class="presentation-text">Ayudaven es una página que busca donaciones para apoyar económicamente a estudiantes venezolanos. Cualquier ayuda por menor que sea conribuye a esta causa.</p>
+						<div class="donar">
+							<a class="donar-btn" href="https://paypal.me/astacolmenares" target="_blank"><img src="{% static 'img/paypal.png' %}" alt="">Donar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<section>
+		<div class="content">
+			<h2 class="razones-title">¿Por qué donar?</h2>
+			<div class="razones-content">
+				<div class="razon">
+					<p>La sumatoria de los gatos de los pasajes de un mes es equivalente a un salario de medio tiempo.</p>
+				</div>
+				<div class="razon">
+					<p>El costo de la canasta básica de alimentos de un mes es considerablemente superior a un salario mínimo.</p>
+				</div>
+				<div class="razon">
+					<p>9 de cada 10 estudiantes abandonan sus estudios para conseguir empleo o migrar.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="content">
+			<p>Gracias por tu apoyo</p>
+		</div>
+	</footer>
+
+	<div class="modal" id="modal">
+		<form class="modal-content" action="{% url 'principal:index' %}" method="post">
+			{% csrf_token %}
+			<span class="modal-close" onclick="cerrarModal();">&times;</span>
+			<h3 class="modal-title">Enviar un mensaje</h3>
+			<div class="modal-field">
+				<label>Por:</label>
+				{{ form.desde }}
+			</div>
+			<div class="modal-field">
+				<label>Mensaje:</label>
+				{{ form.mensaje }}
+			</div>
+			<div class="btn-content">
+				<input class="donar-btn" type="submit" value="Enviar">
+			</div>
+		</form>
+	</div>
+	
+	<span class="visitas">{{ visitas }} visitas</span>
+	<button class="mail" onclick="modal();"><i class="fa fa-paper-plane"></i></button>
+
+	<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
